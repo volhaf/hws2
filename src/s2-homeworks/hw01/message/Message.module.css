@@ -1,28 +1,63 @@
 .message {
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+
 
 }
 
 .imageAndText {
-
+display: flex;
+flex-direction: row-reverse; 
+align-items: flex-end;
+gap: 12px;
 }
 
-.imageAndText img {
 
+.imageAndText img {
+    width: 48px;
+    height: 48px;
 }
 
 .text {
-
+    position: relative;
+    display: flex;
+    width: 530px;
+    min-height: 60px;
+    flex-direction: column;
+    text-align: right;
+    padding: 7px 13px;
+    background-color: #0066CC;
+    border-radius: 10px 10px 0 10px;
 }
 
 .text:after {
-
+    content: "";
+    width: 0;
+    height: 0;
+    position: absolute;
+    bottom: 0;
+    right: -12px;
+    border-bottom: 12px solid #0066CC;
+    border-right: 12px solid transparent;
 }
 
 .name {
-
+    font-family: "Noto Sans Mono", monospace;
+    font-weight: 600;
+    font-size: 18px;
+    color: #fff;
+    margin-bottom: 3px;
 }
 
 .messageText {
+    word-wrap: break-word;
+    font-family: "Noto Sans Mono", monospace;
+    font-weight: 400;
+    font-size: 16px;
+    color: #fff;
+    white-space: normal;
+
 
 }
 

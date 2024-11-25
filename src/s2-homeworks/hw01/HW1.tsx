@@ -4,6 +4,8 @@ import MessageSender from './message-sender/MessageSender'
 import s2 from '../../s1-main/App.module.css'
 import FriendMessage from './friend-message/FriendMessage'
 import avatar from './avatar.png'
+import av from './av.png'
+
 
 /*
 * 1 - описать тип MessageType ++++++++
@@ -39,18 +41,18 @@ export const message0: MessageType = {
         name: 'Volha',  // можно менять
     },
     message: {
-        text: 'Informujemy, że niniejsze powiadomienie zostało wygenerowane automatycznie', // можно менять
-        time: '06:00', // можно менять
+        text: 'Informujemy powiadomienie zostało wygenerowane automatycznie', // можно менять
+        time: '06:00',
     },
 }
 export const friendMessage0: MessageType = {
     id: 100,
     user: {
-        avatar: avatar, // можно менять
-        name: 'Ola', // можно менять
+        avatar: av, // можно менять
+        name: 'Brad', // можно менять
     },
     message: {
-        text: 'зеркальное сообщение для тренировки css', // можно менять
+        text: 'Hi!', // можно менять
         time: '07:00', // можно менять
     },
 }
@@ -68,7 +70,7 @@ const HW1 = () => {
                 {/*для автоматической проверки дз (не менять)*/}
                 <MessageSender M={Message} />
             </div>
-            </div>
+        </div>
     )
 }
 

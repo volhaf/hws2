@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: column;
     margin-left: auto;
+    text-align: right;
 
 
 }
@@ -17,6 +18,8 @@ gap: 12px;
 .imageAndText img {
     width: 48px;
     height: 48px;
+    border-radius: 50%;
+    object-fit: contain;
 }
 
 .text {
@@ -27,8 +30,10 @@ gap: 12px;
     flex-direction: column;
     text-align: right;
     padding: 7px 13px;
+    gap: 5px;
     background-color: #0066CC;
     border-radius: 10px 10px 0 10px;
+
 }
 
 .text:after {
@@ -62,5 +67,10 @@ gap: 12px;
 }
 
 .time {
-
+    margin-top: 5px;
+    font-family: "Noto Sans Mono", monospace;
+    font-weight: 600;
+    font-size: 10px;
+    color: #000000;
+    padding-right: 10px;
 }

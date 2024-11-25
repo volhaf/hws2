@@ -2,10 +2,34 @@
     --header_height: 60px;
 }
 
-.hw {
-
+.hvWrapper {
+    background-color: gray; 
+    max-width: 1280px;
+    width: 100%;
+    padding: 130px 0px 215px 0px;
+    margin: 0 auto;
+    
 }
-
 .hwTitle {
-
+    font-family: "Noto Sans Mono", monospace;
+    font-weight: 600;
+    font-size: 22px;
+    color: #000;
+    border-bottom: 1px solid rgba(217, 217, 217, 1) ; 
+    padding: 10px 0px 10px 70px;
+    
 }
+.hw {
+display: flex;
+flex-direction: column;
+gap: 55px;
+padding: 25px 70px;
+border-bottom: 1px solid rgba(217, 217, 217, 1) ; 
+}
+
+.hwMessage {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+

@@ -3,6 +3,8 @@ import s from './FriendMessage.module.css'
 
 // создать тип вместо any и отобразить приходящие данные
 // ВСЕ ТОЖЕ САМОЕ, ЧТО И В КОМПОНЕНТЕ Message -ПОЭТОМУ ПОДСКАЗОК МЕНЬШЕ
+
+
 const FriendMessage = (props: any) => {
     return (
         <div

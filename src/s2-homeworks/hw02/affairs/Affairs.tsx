@@ -28,17 +28,11 @@ function Affairs(props: AffairsPropsType) {
     const cnHigh = s.button + ' ' + s.high + (props.filter === 'high' ? ' ' + s.active : '')
     const cnMiddle = s.button + ' ' + s.middle + (props.filter === 'middle' ? ' ' + s.active : '')
     const cnLow = s.button + ' ' + s.low + (props.filter === 'low' ? ' ' + s.active : '')
-
-
-    // создаем переменную=мапим наши данные (affairs)=>{
-    // <вызываем компоненту <Affair в которую передаем глубже необходимые данные
-    // в том числе колбэк deleteAffairCallback
-    // />}
-    // получается, что мы мапим массив, но он не отрисовывается тут же, а погружается
-    // глубже в компоненту <Affair/> где произойдет отрисовка
+    
+    
     const mappedAffairs = props.data.map((a: AffairType) => (
         <Affair
-            key={a._id} // кеи ОБЯЗАТЕЛЬНЫ в 99% - так что лучше их писать всегда при создании компонент в мапе
+            key={a._id}
             affair={a}
             deleteAffairCallback={props.deleteAffairCallback}
         />
@@ -76,9 +70,6 @@ function Affairs(props: AffairsPropsType) {
                     Low
                 </button>
             </div>
-            {/*Вот то что мы мапили на стр40 здесь используем. Можно было конечно прямо*/}
-            {/*здесь мапить и разводить болото, но мы решили работать по красивому и*/}
-            {/*все вынесли*/}
             <div className={s.affairs}>{mappedAffairs}</div>
         </div>
     )

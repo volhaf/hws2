@@ -1,6 +1,7 @@
 import React, { ChangeEvent, KeyboardEvent, useState } from 'react'
 import Greeting from './Greeting'
 import { UserType } from './HW3'
+import { error } from 'console'
 
 type GreetingContainerPropsType = {
     users: UserType[]
@@ -15,7 +16,7 @@ export const pureAddUser = (
         if(name.trim() === '') {
             setError('Ошибка! Введите имя!')
         } else {
-            addUserCallback(name)
+            addUserCallback(name.trim())
             setName('')
         }
     // если имя пустое - показать ошибку: setError('Ошибка! Введите имя!'),
@@ -24,10 +25,15 @@ export const pureAddUser = (
     // ЕСЛИ НЕ БУДЕТ ПОЛУЧАТЬСЯ, НЕ РАССТРАИВАЙСЯ. НА ЧЕТВЕРТОМ ЗАНЯТИИ ПО ТУДУЛИСТУ НАУЧИМ), НО ВСЕ ТАКИ ПОПЫТАЙСЯ))
 }
 
-export const pureOnBlur = (name: any, setError: any) => { // если имя пустое - показать ошибку
+export const pureOnBlur = (name: any, setError: any) => {
+    if (name.trim() === '') {
+        setError('Ошибка! Введите имя!')
+}   
 }
-
-export const pureOnEnter = (e: any, addUser: any) => { // если нажата кнопка Enter - добавить
+export const pureOnEnter = (e: KeyboardEvent<HTMLInputElement>, addUser: ()=> void) => { 
+    if(e.key === 'Enter') {
+        addUser()
+    }
 }
 
 const GreetingContainer: React.FC<GreetingContainerPropsType> = ({

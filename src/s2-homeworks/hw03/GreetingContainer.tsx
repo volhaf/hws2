@@ -19,10 +19,6 @@ export const pureAddUser = (
             addUserCallback(name.trim())
             setName('')
         }
-    // если имя пустое - показать ошибку: setError('Ошибка! Введите имя!'),
-    // иначе - добавить юзера при помощи addUserCallback и очистить инпут засетав ''
-    // проверить на пустоту можно при помощи метода trim(). К примеру: name.trim() !== ''
-    // ЕСЛИ НЕ БУДЕТ ПОЛУЧАТЬСЯ, НЕ РАССТРАИВАЙСЯ. НА ЧЕТВЕРТОМ ЗАНЯТИИ ПО ТУДУЛИСТУ НАУЧИМ), НО ВСЕ ТАКИ ПОПЫТАЙСЯ))
 }
 
 export const pureOnBlur = (name: any, setError: any) => {
@@ -35,19 +31,17 @@ export const pureOnEnter = (e: KeyboardEvent<HTMLInputElement>, addUser: ()=> vo
         addUser()
     }
 }
-
 const GreetingContainer: React.FC<GreetingContainerPropsType> = ({
     users,
     addUserCallback,
 }) => {
 
     // деструктуризация пропсов
-    const [name, setName] = useState<any>('') // need to fix any
-    const [error, setError] = useState<any>('') // need to fix any
+    const [name, setName] = useState<string>('') 
+    const [error, setError] = useState<string | null >('')
 
-    const setNameCallback = (e: any) => { // need to fix any
-        setName('some name') // need to fix
-
+    const setNameCallback = (e: KeyboardEvent<HTMLInputElement>) => { 
+        setName(e.currentTarget.value)
         error && setError('')
     }
     const addUser = () => {
@@ -55,13 +49,10 @@ const GreetingContainer: React.FC<GreetingContainerPropsType> = ({
     }
 
     const onBlur = () => {
-        // все тоже самое, что и в addUser -функция стрелочник
-        // всего лишь получает сигнали из компоненты <Greeting/> и вызывает pureOnBlur (с кучкой аргументов)
         pureOnBlur(name, setError)
     }
 
-    const onEnter = (e: any) => {
-        // и здесь все тоже самое...)
+    const onEnter = (e: KeyboardEvent<HTMLInputElement>) => {
         pureOnEnter(e, addUser)
     }
 

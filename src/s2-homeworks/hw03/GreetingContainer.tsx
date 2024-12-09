@@ -1,7 +1,6 @@
 import React, { ChangeEvent, KeyboardEvent, useState } from 'react'
 import Greeting from './Greeting'
 import { UserType } from './HW3'
-import { error } from 'console'
 
 type GreetingContainerPropsType = {
     users: UserType[]
@@ -40,7 +39,7 @@ const GreetingContainer: React.FC<GreetingContainerPropsType> = ({
     const [name, setName] = useState<string>('') 
     const [error, setError] = useState<string | null >('')
 
-    const setNameCallback = (e: KeyboardEvent<HTMLInputElement>) => { 
+    const setNameCallback = (e: ChangeEvent<HTMLInputElement>) => { 
         setName(e.currentTarget.value)
         error && setError('')
     }
@@ -56,9 +55,9 @@ const GreetingContainer: React.FC<GreetingContainerPropsType> = ({
         pureOnEnter(e, addUser)
     }
 
-    const totalUsers = 0 // need to fix
-    const lastUserName = 'some name' // need to fix
-
+    const totalUsers = users.length
+    const lastUserName = totalUsers > 0 ? users[totalUsers -1].name : ''; 
+    
     return (
         <Greeting
             name={name}

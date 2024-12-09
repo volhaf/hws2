@@ -3,11 +3,21 @@ import Greeting from './Greeting'
 import { UserType } from './HW3'
 
 type GreetingContainerPropsType = {
-    users: any // need to fix any
-    addUserCallback: any // need to fix any
+    users: UserType[]
+    addUserCallback: (name: string)=> void
 }
 
-export const pureAddUser = (name: any, setError: any, setName: any, addUserCallback: any) => {
+export const pureAddUser = (
+    name: string, 
+    setError: (error:string) => void, 
+    setName: (error:string) => void, 
+    addUserCallback: (name: string) => void) => {
+        if(name.trim() === '') {
+            setError('Ошибка! Введите имя!')
+        } else {
+            addUserCallback(name)
+            setName('')
+        }
     // если имя пустое - показать ошибку: setError('Ошибка! Введите имя!'),
     // иначе - добавить юзера при помощи addUserCallback и очистить инпут засетав ''
     // проверить на пустоту можно при помощи метода trim(). К примеру: name.trim() !== ''
@@ -20,14 +30,11 @@ export const pureOnBlur = (name: any, setError: any) => { // если имя п�
 export const pureOnEnter = (e: any, addUser: any) => { // если нажата кнопка Enter - добавить
 }
 
-// более простой и понятный для новичков
-// function GreetingContainer(props: GreetingPropsType) {
-
-// более современный и удобный для про :)
 const GreetingContainer: React.FC<GreetingContainerPropsType> = ({
     users,
     addUserCallback,
 }) => {
+
     // деструктуризация пропсов
     const [name, setName] = useState<any>('') // need to fix any
     const [error, setError] = useState<any>('') // need to fix any
@@ -38,10 +45,6 @@ const GreetingContainer: React.FC<GreetingContainerPropsType> = ({
         error && setError('')
     }
     const addUser = () => {
-        // это всего лишь функция стрелочник- она всего лишь получает
-        //сигнал из компоненты <Greeting/> и вызывает pureAddUser (с кучей аргументов)
-        // ЗДЕСЬ НИЧЕГО ПИСАТЬ НЕ НУЖНО-ВСЕ ОК
-
         pureAddUser(name, setError, setName, addUserCallback)
     }
 

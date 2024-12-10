@@ -7,7 +7,9 @@ type DefaultButtonPropsType = DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonE
 
 type SuperButtonPropsType = DefaultButtonPropsType & {
     xType?: string
-}
+} //xType добавляет кастомное свойство для расширения функциональности !!!!!
+//Компонент может быть использован как обычная кнопка или с дополнительными стилизованными типами!!!
+
 
 const SuperButton: React.FC<SuperButtonPropsType> = (
     {
@@ -18,11 +20,19 @@ const SuperButton: React.FC<SuperButtonPropsType> = (
     }
 ) => {
     const finalClassName = s.button
-        // + (disabled
-        //         ? ...
-        //         : xType === 'red'
-        //             ? ...
-        + (className ? ' ' + className : '') // задачка на смешивание классов
+    + (disabled ? ' ' + s.disabled : '')
+    // Если disabled равно true, добавляется класс s.disabled. Перед ним добавляется пробел (' '), чтобы корректно соединить классы.
+    //Если disabled равно false, ничего не добавляется.
+    + (xType === 'red' && !disabled ? ' ' + s.red : '') 
+    //Если xType равно 'red' и кнопка не отключена (!disabled), добавляется класс s.red.
+    //Если хотя бы одно из условий не выполнено, ничего не добавляется.
+    + (xType === 'secondary' && !disabled ? ' ' + s.secondary : '')
+    //Если xType равно 'secondary' и кнопка не отключена, добавляется класс s.secondary
+    + (!disabled && !xType ? ' ' + s.default : '')
+    //Если кнопка не отключена и xType отсутствует (или равно undefined), добавляется класс s.default.
+        
+        
+        // задачка на смешивание классов
 
     //ИЛИ ЕСЛИ НЕ ПОНЯТНО С finalClassName  ТОЖЕ САМОЕ ПРИ ПОМОЩИ ШАБЛОННЫХ СТРОК:
     // `${s.СТИЛЬ КНОПКИ}  ${xType==='КРАСНЫЙ' ? ДАВАЙ КРАСНЫЙ СТИЛЬ : xType === 'secondary' ? ДАВАЙ СЕКОНДАРИ СТИЛЬ: ДАВАЙ ПО ДЕФОЛТУ } ${disabled ? ДАВАЙ ДИЗАБЛЕТ СТИЛЬ :  ПУСТУЮ СТРОКУ} `
